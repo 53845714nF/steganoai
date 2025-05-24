@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hidden character detector</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script type="text/javascript" src="script.js"></script>
+</head>
+
+<body class="bg-gradient-to-br from-gray-900 to-gray-800 min-h-screen text-white">
+    <div class="container mx-auto px-4 py-8">
+        <header class="text-center mb-8">
+            <h1 class="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+                Hidden character detector
+            </h1>
+            <p class="text-gray-300 max-w-2xl mx-auto">
+                This website analyzes text for hidden Unicode characters that can be used for steganography.
+                Based on the techniques from ChatGPT's secret messages.
+            </p>
+        </header>
+
+        <div class="max-w-4xl mx-auto">
+            <div class="bg-gray-800 rounded-lg p-6 mb-6 shadow-xl">
+                <label for="inputText" class="block text-lg font-semibold mb-3">
+                    Enter text to analyze:
+                </label>
+                <textarea 
+                    id="inputText" 
+                    placeholder="Insert the text to be analyzed here..."
+                    class="w-full h-32 p-4 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
+                ></textarea>
+                <button 
+                    onclick="analyzeText()" 
+                    class="mt-4 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 px-6 py-3 rounded-lg font-semibold transition-all duration-200 transform hover:scale-105"
+                >
+                    Analyze text
+                </button>
+            </div>
+
+            <div id="results" class="hidden">
+                <div class="bg-gray-800 rounded-lg p-6 shadow-xl">
+                    <h2 class="text-2xl font-bold mb-4">Analysis results</h2>
+                    
+                    <div class="grid md:grid-cols-2 gap-6 mb-6">
+                        <div class="bg-gray-700 rounded-lg p-4">
+                            <h3 class="text-lg font-semibold mb-2 text-blue-400">Statistics</h3>
+                            <div id="stats" class="space-y-2"></div>
+                        </div>
+                        
+                        <div class="bg-gray-700 rounded-lg p-4">
+                            <h3 class="text-lg font-semibold mb-2 text-purple-400">Suspicious characters</h3>
+                            <div id="suspiciousChars" class="space-y-2"></div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-700 rounded-lg p-4 mb-6">
+                        <h3 class="text-lg font-semibold mb-3 text-green-400">Detailed analysis</h3>
+                        <div id="detailedAnalysis" class="space-y-2 max-h-96 overflow-y-auto"></div>
+                    </div>
+
+                    <div class="bg-gray-700 rounded-lg p-4">
+                        <h3 class="text-lg font-semibold mb-3 text-yellow-400">Visualization</h3>
+                        <div id="visualization" class="font-mono text-sm bg-gray-800 p-4 rounded border max-h-64 overflow-y-auto whitespace-pre-wrap"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
